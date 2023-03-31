@@ -7,7 +7,13 @@ export const store = reactive({
 
     APIsearchMovie: 'https://api.themoviedb.org/3/search/movie?api_key=90a25af45a54fd411fdf0f71a6dda48f&query=',
 
-    popularMovie: [],
+    APIpopularSeries: 'https://api.themoviedb.org/3/tv/popular?api_key=90a25af45a54fd411fdf0f71a6dda48f',
+
+    APIsearchSeries: 'https://api.themoviedb.org/3/search/tv?api_key=90a25af45a54fd411fdf0f71a6dda48f&query=',
+
+    movies: [],
+
+    seriesTv: [],
 
     searchFilms: '',
 

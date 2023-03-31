@@ -11,8 +11,14 @@ export default {
   },
   created() {
     axios.get(store.APIpopularMovie).then((res) => {
-      this.store.popularMovie = res.data.results;
+      this.store.movies = res.data.results;
     });
+
+    axios.get(store.APIpopularSeries).then((res) => {
+      this.store.seriesTv = res.data.results;
+      console.log(this.store.seriesTv)
+    });
+
   },
   components: {
     AppNavbar,
@@ -20,13 +26,21 @@ export default {
   },
   methods: {
     search() {
-      let newApi = this.store.APIsearchMovie;
+      let newApiFilm = this.store.APIsearchMovie;
       if (this.store.searchFilms != '') {
-        newApi += this.store.searchFilms;
+        newApiFilm += this.store.searchFilms;
       };
-      axios.get(newApi).then((res) => {
+      axios.get(newApiFilm).then((res) => {
         console.log(res.data.results);
-        this.store.popularMovie = res.data.results;
+        this.store.movies = res.data.results;
+      });
+
+      let newApiSeries = this.store.APIsearchSeries;
+      if (this.store.searchFilms != '') {
+        newApiSeries += this.store.searchFilms;
+      };
+      axios.get(newApiSeries).then((res) => {
+        this.store.seriesTv = res.data.results;
       });
     },
   },

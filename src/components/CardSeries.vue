@@ -7,11 +7,11 @@ export default {
         }
     },
     props: {
-        movie: Object,
+        serie: Object,
     },
     methods: {
-        flagLanguage(movie) {
-            let language = movie.original_language;
+        flagLanguage(serie) {
+            let language = serie.original_language;
             if (language == 'en') {
                 language = 'gb';
                 console.log(language);
@@ -21,6 +21,10 @@ export default {
                 language = 'jp';
             } else if (language == 'zh') {
                 language = 'cn';
+            } else if (language == 'ko') {
+                language = 'kr';
+            } else if (language == 'hi') {
+                language = 'in';
             };
             return language;
         },
@@ -32,18 +36,18 @@ export default {
 
 
 <template>
-    <div id="film-card">
-        <h2>{{ movie.title }}</h2>
-        <div><em>{{ movie.original_title }}</em></div>
-        <div>Lingua Originale: <i :class="`fi fi-${flagLanguage(movie)} fis`"></i></div>
-        <div>Voto Film: {{ movie.vote_average }}</div>
+    <div id="series-card">
+        <h2>{{ serie.name }}</h2>
+        <div><em>{{ serie.original_name }}</em></div>
+        <div>Lingua Originale: <i :class="`fi fi-${flagLanguage(serie)} fis`"></i></div>
+        <div>Voto Film: {{ serie.vote_average }}</div>
     </div>
 </template>
 
 
 
 <style lang="scss" scoped>
-#film-card {
+#series-card {
     display: flex;
     flex-direction: column;
     align-items: center;

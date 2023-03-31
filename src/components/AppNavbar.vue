@@ -14,7 +14,8 @@ export default {
         <div id="navbar-inner">
             <h1>BOOLFIX</h1>
             <div id="input-container">
-                <input type="text" placeholder="Cerca un film" v-model="store.searchFilms">
+                <input type="text" placeholder="Cerca un film" v-model="store.searchFilms"
+                    @keyup.enter="$emit('searchFilm')">
                 <button @click="$emit('searchFilm')">Cerca</button>
             </div>
 
