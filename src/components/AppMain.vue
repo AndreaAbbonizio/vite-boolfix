@@ -23,7 +23,7 @@ export default {
         <h2>Films</h2>
         <div class="container-cards">
             <CardFilm v-if="store.movies.length > 0" v-for="movie in store.movies" :movie="movie"></CardFilm>
-            <div v-else class="not-results">Nessuna film trovato</div>
+            <div v-else class="not-results">Nessun film trovato</div>
         </div>
         <h2>Tv series</h2>
         <div class="container-cards">
@@ -49,7 +49,7 @@ export default {
 
         max-width: 1200px;
         margin: 0 auto;
-        padding: 15px 0;
+        padding: 10px;
         overflow-x: auto;
         height: 50%;
 

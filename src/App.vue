@@ -16,7 +16,6 @@ export default {
 
     axios.get(store.APIpopularSeries).then((res) => {
       this.store.seriesTv = res.data.results;
-      console.log(this.store.seriesTv)
     });
 
   },
@@ -31,7 +30,6 @@ export default {
         newApiFilm += this.store.searchFilms;
       };
       axios.get(newApiFilm).then((res) => {
-        console.log(res.data.results);
         this.store.movies = res.data.results;
       });
 

@@ -11,6 +11,8 @@ export const store = reactive({
 
     APIsearchSeries: 'https://api.themoviedb.org/3/search/tv?api_key=90a25af45a54fd411fdf0f71a6dda48f&query=',
 
+    APIimage: 'https://image.tmdb.org/t/p/w342',
+
     movies: [],
 
     seriesTv: [],
