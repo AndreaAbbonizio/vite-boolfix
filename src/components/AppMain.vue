@@ -28,7 +28,7 @@ export default {
         <h2>Tv series</h2>
         <div class="container-cards">
             <CardSeries v-if="store.seriesTv.length > 0" v-for="serie in store.seriesTv" :serie="serie"></CardSeries>
-            <div v-else class="not-results">Nessuna serie trovata</div>
+            <div v-else class="not-results">Nessuna serie trovata ..</div>
         </div>
     </div>
 </template>
