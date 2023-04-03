@@ -16,7 +16,6 @@ export default {
             let language = serie.original_language;
             if (language == 'en') {
                 language = 'gb';
-                console.log(language);
             } else if (language == '') {
                 language = 'Sconosciuta';
             } else if (language == 'ja') {
@@ -41,7 +40,7 @@ export default {
 
         notHovered() {
             this.isHovered = false;
-        }
+        },
     },
 }
 </script>
@@ -50,18 +49,18 @@ export default {
 
 
 <template>
-    <div id="series-card">
+    <div id="series-card" @mouseover="changeHovered()" @mouseleave="notHovered()">
         <div class="text-card">
             <h2>{{ serie.name }}</h2>
             <div><em>{{ serie.original_name }}</em></div>
             <div>Lingua Originale: <i :class="`fi fi-${flagLanguage(serie)} fis`"></i></div>
             <div>
                 Voto Film:
-                <i v-for="star in parseInt(serie.vote_average / 2)" class="fas fa-star"></i>
+                <i v-for="star in Math.ceil(serie.vote_average / 2)" class="fas fa-star"></i>
+                <i v-for="starBlack in  Math.ceil(4 - this.serie.vote_average / 2)" class="fas fa-star" id="white-star"></i>
             </div>
         </div>
-        <img :src=imagePoster(serie) alt="" class="image" :class="isHovered ? 'hovered' : 'image'"
-            @mouseover="changeHovered()" @mouseleave="notHovered()">
+        <img :src=imagePoster(serie) alt="" class="image" :class="isHovered ? 'hovered' : 'image'">
     </div>
 </template>
 
@@ -91,6 +90,14 @@ export default {
 
         position: relative;
         z-index: 2;
+
+        .fa-star {
+            color: green;
+        }
+
+        #white-star {
+            color: white;
+        }
     }
 
     .image {

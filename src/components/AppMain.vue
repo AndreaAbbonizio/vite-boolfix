@@ -20,7 +20,7 @@ export default {
 
 <template>
     <div id="bg-main">
-        <h2>Films</h2>
+        <h2>Movies</h2>
         <div class="container-cards">
             <CardFilm v-if="store.movies.length > 0" v-for="movie in store.movies" :movie="movie"></CardFilm>
             <div v-else class="not-results">Nessun film trovato</div>

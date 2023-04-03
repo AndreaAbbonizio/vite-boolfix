@@ -13,6 +13,12 @@ export const store = reactive({
 
     APIimage: 'https://image.tmdb.org/t/p/w342',
 
+    APIactorMovies: 'https://api.themoviedb.org/3/movie/',
+
+    APIkey: '?api_key=90a25af45a54fd411fdf0f71a6dda48f&append_to_response=credits',
+
+    actors: [],
+
     movies: [],
 
     seriesTv: [],

@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import { store } from '../store';
 export default {
     data() {
@@ -16,7 +17,6 @@ export default {
             let language = movie.original_language;
             if (language == 'en') {
                 language = 'gb';
-                console.log(language);
             } else if (language == '') {
                 language = 'Sconosciuta';
             } else if (language == 'ja') {
@@ -44,18 +44,18 @@ export default {
 
 
 <template>
-    <div id="film-card">
+    <div id="film-card" @mouseover="changeHovered()" @mouseleave="notHovered()">
         <div class="card-text">
             <h3>{{ movie.title }}</h3>
             <div><em>{{ movie.original_title }}</em></div>
             <div>Lingua Originale: <i :class="`fi fi-${flagLanguage(movie)} fis`"></i></div>
             <div>
                 Voto Film:
-                <i v-for="star in parseInt(movie.vote_average / 2)" class="fas fa-star"></i>
+                <i v-for="star in Math.ceil(movie.vote_average / 2)" class="fas fa-star"></i>
+                <i v-for="starBlack in  Math.ceil(4 - this.movie.vote_average / 2)" class="fas fa-star" id="white-star"></i>
             </div>
         </div>
-        <img :src=imagePoster(movie) alt="" class="image" :class="isHovered ? 'hovered' : 'image'"
-            @mouseover="changeHovered()" @mouseleave="notHovered()">
+        <img :src=imagePoster(movie) alt="" class="image" :class="isHovered ? 'hovered' : 'image'">
 
     </div>
 </template>
@@ -86,6 +86,15 @@ export default {
 
         position: relative;
         z-index: 2;
+
+
+        .fa-star {
+            color: green;
+        }
+
+        #white-star {
+            color: white;
+        }
     }
 
     .image {
