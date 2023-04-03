@@ -12,7 +12,6 @@ export default {
   created() {
     axios.get(store.APIpopularMovie).then((res) => {
       this.store.movies = res.data.results;
-      console.log(this.store.actors);
 
     });
 
