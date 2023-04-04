@@ -12,7 +12,7 @@ export default {
 <template>
     <nav>
         <div id="navbar-inner">
-            <h1>BOOLFIX</h1>
+            <h1>BOOLFLIX</h1>
             <div id="input-container">
                 <input type="text" placeholder="Cerca un film" v-model="store.searchFilms"
                     @keyup.enter="$emit('searchFilm')">

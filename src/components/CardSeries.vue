@@ -6,8 +6,11 @@ export default {
             store,
             hoveredClass: 'hovered',
             isHovered: false,
+            genre: '',
         }
     },
+
+
     props: {
         serie: Object,
     },
@@ -41,6 +44,16 @@ export default {
         notHovered() {
             this.isHovered = false;
         },
+        getGenres(genre) {
+            let genreArray = [];
+            for (let index = 0; index < store.genresListTv.length; index++) {
+                if (genre == store.genresListTv[index].id) {
+                    genreArray += store.genresListTv[index].name;
+                }
+            }
+            return genreArray;
+        },
+
     },
 }
 </script>
@@ -57,8 +70,12 @@ export default {
             <div>
                 Voto Film:
                 <i v-for="star in Math.ceil(serie.vote_average / 2)" class="fas fa-star"></i>
-                <i v-for="starBlack in  Math.ceil(4 - this.serie.vote_average / 2)" class="fas fa-star" id="white-star"></i>
+                <i v-for="whiteStar in 5 - Math.ceil(serie.vote_average / 2)" class="fas fa-star" id="white-star"></i>
+                <div id="genres">Genere:
+                    <span v-for="genre in serie.genre_ids"> {{ getGenres(genre) }}</span>
+                </div>
             </div>
+
         </div>
         <img :src=imagePoster(serie) alt="" class="image" :class="isHovered ? 'hovered' : 'image'">
     </div>
@@ -80,6 +97,7 @@ export default {
     border-radius: 6px;
     padding: 0.5em 20px;
     background-color: rgba(0, 0, 0, .8);
+    height: 350px;
 
     .text-card {
         display: flex;
@@ -97,6 +115,17 @@ export default {
 
         #white-star {
             color: white;
+        }
+
+        #genres {
+            font-size: .8em;
+
+
+            span {
+                margin-right: .5em;
+                display: inline-block;
+
+            }
         }
     }
 

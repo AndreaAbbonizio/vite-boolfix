@@ -1,4 +1,5 @@
 <script>
+
 import { store } from '../store';
 import CardFilm from './CardFilm.vue';
 import CardSeries from './CardSeries.vue';
@@ -20,15 +21,17 @@ export default {
 
 <template>
     <div id="bg-main">
-        <h2>Movies</h2>
-        <div class="container-cards">
-            <CardFilm v-if="store.movies.length > 0" v-for="movie in store.movies" :movie="movie"></CardFilm>
-            <div v-else class="not-results">Nessun film trovato</div>
+        <div class="film">
+            <h2>Movies</h2>
+            <div class="container-cards">
+                <CardFilm v-if="store.movies.length > 0" v-for="movie in store.movies" :movie="movie"></CardFilm>
+                <div v-else class="not-results">Nessun film trovato</div>
+            </div>
         </div>
         <h2>Tv series</h2>
         <div class="container-cards">
             <CardSeries v-if="store.seriesTv.length > 0" v-for="serie in store.seriesTv" :serie="serie"></CardSeries>
-            <div v-else class="not-results">Nessuna serie trovata ..</div>
+            <div v-else class="not-results">Nessuna serie trovata</div>
         </div>
     </div>
 </template>
@@ -51,7 +54,7 @@ export default {
         margin: 0 auto;
         padding: 10px;
         overflow-x: auto;
-        height: 50%;
+
 
         .not-results {
             display: flex;

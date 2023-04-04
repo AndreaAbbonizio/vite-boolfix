@@ -12,11 +12,19 @@ export default {
   created() {
     axios.get(store.APIpopularMovie).then((res) => {
       this.store.movies = res.data.results;
+    });
+    axios.get(store.APIpopularSeries).then((res) => {
+      this.store.seriesTv = res.data.results;
 
     });
 
-    axios.get(store.APIpopularSeries).then((res) => {
-      this.store.seriesTv = res.data.results;
+    axios.get(store.APIgenresMovie).then((res) => {
+      this.store.genresListMovie = res.data.genres;
+
+    });
+
+    axios.get(store.APIgenresTv).then((res) => {
+      this.store.genresListTv = res.data.genres;
     });
 
   },
@@ -33,7 +41,6 @@ export default {
       axios.get(newApiFilm).then((res) => {
         this.store.movies = res.data.results;
       });
-
       let newApiSeries = this.store.APIsearchSeries;
       if (this.store.searchFilms != '') {
         newApiSeries += this.store.searchFilms;
