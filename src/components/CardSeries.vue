@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import { store } from '../store';
 export default {
     data() {
@@ -54,6 +55,7 @@ export default {
             return genreArray;
         },
 
+
     },
 }
 </script>
@@ -71,10 +73,11 @@ export default {
                 Voto Film:
                 <i v-for="star in Math.ceil(serie.vote_average / 2)" class="fas fa-star"></i>
                 <i v-for="whiteStar in 5 - Math.ceil(serie.vote_average / 2)" class="fas fa-star" id="white-star"></i>
-                <div id="genres">Genere:
-                    <span v-for="genre in serie.genre_ids"> {{ getGenres(genre) }}</span>
-                </div>
             </div>
+            <div id="genres">Genere:
+                <span v-for="genre in serie.genre_ids"> {{ getGenres(genre) }}</span>
+            </div>
+
 
         </div>
         <img :src=imagePoster(serie) alt="" class="image" :class="isHovered ? 'hovered' : 'image'">

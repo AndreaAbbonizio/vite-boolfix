@@ -27,4 +27,7 @@ export const store = reactive({
 
     searchFilms: '',
 
+    activeMovie: true,
+
+    activeTv: true,
 });

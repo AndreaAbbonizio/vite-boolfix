@@ -6,13 +6,37 @@ export default {
             store,
         }
     },
+    methods: {
+        changeMain() {
+            this.store.activeMovie = true;
+            this.store.activeTv = true;
+        },
+        changeMainMovie() {
+            this.store.activeMovie = true;
+            this.store.activeTv = false;
+        },
+        changeMainTv() {
+            this.store.activeMovie = false;
+            this.store.activeTv = true;
+        }
+
+
+    },
 }
 </script>
 
 <template>
     <nav>
         <div id="navbar-inner">
-            <h1>BOOLFLIX</h1>
+            <div class="navbar-left">
+                <h1>BOOLFLIX</h1>
+                <ul>
+                    <li @click="changeMain()">Home</li>
+                    <li @click="changeMainMovie()">Movies</li>
+                    <li @click="changeMainTv()">Tv Series</li>
+                </ul>
+
+            </div>
             <div id="input-container">
                 <input type="text" placeholder="Cerca un film" v-model="store.searchFilms"
                     @keyup.enter="$emit('searchFilm')">
@@ -33,6 +57,19 @@ nav {
         align-items: center;
         justify-content: space-between;
         padding: 20px 50px;
+
+
+        .navbar-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            ul {
+                display: flex;
+                gap: 10px;
+                list-style-type: none;
+            }
+        }
     }
 
     input {

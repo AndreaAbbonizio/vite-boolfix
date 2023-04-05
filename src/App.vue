@@ -49,12 +49,14 @@ export default {
         this.store.seriesTv = res.data.results;
       });
     },
+
   },
 }
 </script>
 
 <template>
-  <AppNavbar @searchFilm="search()"></AppNavbar>
+  <AppNavbar @searchFilm="search()">
+  </AppNavbar>
   <AppMain></AppMain>
 </template>
 
